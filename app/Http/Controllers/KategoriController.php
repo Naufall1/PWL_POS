@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\KategoriDataTable;
+use App\Http\Requests\StorePostRequest;
 use App\Models\KategoriModel;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,13 +17,14 @@ class KategoriController extends Controller
     public function create(){
         return view('kategori.create');
     }
-    public function store(Request $request){
-        KategoriModel::create(
-            [
-                'kategori_kode' => $request->kodeKategori,
-                'kategori_nama' => $request->namaKategori,
-            ]
-        );
+    public function store(StorePostRequest $request): RedirectResponse {
+        $validated = $request->validated();
+        // KategoriModel::create(
+        //     [
+        //         'kategori_kode' => $request->kodeKategori,
+        //         'kategori_nama' => $request->namaKategori,
+        //     ]
+        // );
         return redirect('/kategori');
     }
     public function edit($id){
@@ -41,4 +44,3 @@ class KategoriController extends Controller
         return redirect('/kategori');
     }
 }
-
