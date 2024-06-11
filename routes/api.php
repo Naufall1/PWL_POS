@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BarangController;
 use App\Http\Controllers\Api\KategoriController;
 use App\Http\Controllers\Api\LevelController;
 use App\Http\Controllers\Api\LoginController;
@@ -45,3 +46,9 @@ Route::post('categories', [KategoriController::class, 'store']);
 Route::get('categories/{category}', [KategoriController::class, 'show']);
 Route::put('categories/{category}', [KategoriController::class, 'update']);
 Route::delete('categories/{category}', [KategoriController::class, 'destroy']);
+
+Route::get('products', [BarangController::class, 'index']);
+Route::post('products', [BarangController::class, 'store']);
+Route::get('products/{product}', [BarangController::class, 'show']);
+Route::put('products/{product}', [BarangController::class, 'update']);
+Route::delete('products/{product}', [BarangController::class, 'destroy']);
