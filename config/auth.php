@@ -65,10 +65,10 @@ return [
             'model' => App\Models\UserModel::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'api' => [
+            'driver' => 'jwt',
+            'table' => 'users',
+        ],
     ],
 
     /*
