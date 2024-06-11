@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\LevelModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -31,7 +32,7 @@ class UserController extends Controller
             UserModel::create([
                 'level_id' => LevelModel::where('level_kode',$request->level_kode)->value('level_id'),
                 'username' => $request->username,
-                'password' => bcrypt($request->password),
+                'password' => Hash::make($request->password),
                 'nama' => $request->nama,
             ]),
             201
